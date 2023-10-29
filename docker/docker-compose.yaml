@@ -1,0 +1,29 @@
+services:
+    postgres_posreports:
+        build:
+            context: .
+            dockerfile: "./Dockerfile"
+        image: "postgres-posreports"
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=posreports
+        volumes:
+            - "./posreports_postgres_data:/var/lib/postgresql/data:rw"
+        ports:
+            - "5432:5432"
+    pgadmin:
+        image: dpage/pgadmin4
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=maytione@gmail.com
+            - PGADMIN_DEFAULT_PASSWORD=root
+        ports:
+            - "8081:80"
+
+networks:
+    posreports:
+        name: posreports
+        driver: bridge
+        driver_opts:
+            com.docker.network.bridge.name: br_posreports
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2" author="maytione">
+        <sql>
+           INSERT INTO users
+               (firstname,lastname,username, email, password, role)
+           VALUES
+               ('Admin','Admin','admin','admin@program.hr','$2a$10$QCLnP4xykNuFnVOcFbMrAOU0BnC3LNHkojXfZwzZODgE3wYADlqn.','ADMIN');
+        </sql>
+        <rollback>
+            DELETE FROM users WHERE username='admin@program.hr';
+        </rollback>
+    </changeSet>
+</databaseChangeLog>

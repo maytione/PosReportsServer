@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/posreports?currentSchema=pos
+    driver-class-name: org.postgresql.Driver
+    username: pr_user
+    password: pr_user_pass
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+
+
+
